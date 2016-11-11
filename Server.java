@@ -5,6 +5,8 @@ import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.Scanner;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 public class Server {
     public static final int PORT = 9999;
@@ -42,6 +44,9 @@ public class Server {
         }
     }
     public static void main(String[] args) throws IOException {
+
+        ExecutorService service = Executors.newFixedThreadPool(4);
         new Server(PORT);
+        service.shutdown();
     }
 }
